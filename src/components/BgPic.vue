@@ -4,7 +4,7 @@
             <li v-for="n in 5" :key="n">
                 <img :src="`static/img/${n}.jpg`" :title="`${n}.jpg`"/>
             </li>
-            <li v-for="n in 5" :key="n">
+            <li v-for="n in 5" :key="n+5">
                 <img :src="`static/img/${n}.jpg`" :title="`${n}.jpg`"/>
             </li>
         </ul>

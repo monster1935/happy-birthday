@@ -7,7 +7,7 @@
         <div class="fuego"></div>
         <div class="fuego"></div>
     </div>
-
+    <Candle></Candle>
     <Cake></Cake>
 
     <div class="name">Dear YuanYuan</div>
@@ -23,6 +23,7 @@
 import $ from 'jquery';
 import Cake from './components/Cake';
 import BgPic from './components/BgPic';
+import Candle from './components/Candle';
 
 export default {
   name: 'App',
@@ -32,27 +33,36 @@ export default {
   },
   components: {
       Cake,
-      BgPic
+      BgPic,
+      Candle
   },
   mounted () {
-    setTimeout(function () {
-      $('.name').animate({
-          opacity:"1",
-          top:"15%"
-      },2000);
 
-    },6000);
     setTimeout(function () {
-      $('.happy').animate({
-          opacity:"1",
-          top:"15%"
-      },2000);
-
+        $('.name').animate({
+            opacity:"1",
+            top:"15%"
+        },2000);
     },6000);
-    $(window).click(function(){
-		$('audio')[0].play();
-	});
-	window.audio=$('audio')[0].play();
+
+    setTimeout(function () {
+        $('.happy').animate({
+            opacity:"1",
+            top:"15%"
+        },2000);
+    },6000);
+    
+    // ios auto play hack
+    const $bgAudio = $('audio')[0];
+    $bgAudio.play();
+   
+    
+    document.addEventListener('click', function () {
+        $bgAudio.play()
+    }); 
+    document.addEventListener('touchstart', function () {
+        $bgAudio.play()
+    });
   },
 }
 </script>
@@ -100,114 +110,6 @@ html, body {
     top: 30%;
     animation-delay: 0s;
     z-index: 10;
-}
-.velas {
-    background: #ffffff;
-    border-radius: 10px;
-    position: relative;
-    top: 247px;
-    margin-left: 49.5%;
-    width: 5px;
-    height: 35px;
-    -webkit-transform: translateY(-300px);
-    -ms-transform: translateY(-300px);
-    transform: translateY(-300px);
-    -webkit-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-animation: in 500ms 6s ease-out forwards;
-    animation: in 500ms 6s ease-out forwards;
-}
-
-.velas:after,
-.velas:before {
-    background: rgba(255, 0, 0, 0.4);
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2.22222222px;
-}
-
-.velas:after {
-    top: 25%;
-    left: 0;
-}
-
-.velas:before {
-    top: 45%;
-    left: 0;
-}
-
-
-.fuego {
-    border-radius: 100%;
-    position: absolute;
-    top: -20px;
-    left: 70%;
-    margin-left: -4.2px;
-    width: 6.66666667px;
-    height: 18px;
-}
-
-.fuego:nth-child(1) {
-    -webkit-animation: fuego 2s 6.5s infinite;
-    animation: fuego 2s 6.5s infinite;
-}
-
-.fuego:nth-child(2) {
-    -webkit-animation: fuego 1.5s 6.5s infinite;
-    animation: fuego 1.5s 6.5s infinite;
-}
-
-.fuego:nth-child(3) {
-    -webkit-animation: fuego 1s 6.5s infinite;
-    animation: fuego 1s 6.5s infinite;
-}
-
-.fuego:nth-child(4) {
-    -webkit-animation: fuego 0.5s 6.5s infinite;
-    animation: fuego 0.5s 6.5s infinite;
-}
-
-.fuego:nth-child(5) {
-    -webkit-animation: fuego 0.2s 6.5s infinite;
-    animation: fuego 0.2s 6.5s infinite;
-}
-
-@-webkit-keyframes fuego {
-    0%, 100% {
-        background: rgba(254, 248, 97, 0.5);
-        -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(0) scale(1);
-        transform: translateY(0) scale(1);
-    }
-
-    50% {
-        background: rgba(255, 50, 0, 0.1);
-        -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(-20px) scale(0);
-        transform: translateY(-20px) scale(0);
-    }
-}
-
-@keyframes fuego {
-    0%, 100% {
-        background: rgba(254, 248, 97, 0.5);
-        -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(0) scale(1);
-        transform: translateY(0) scale(1);
-    }
-
-    50% {
-        background: rgba(255, 50, 0, 0.1);
-        -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(-20px) scale(0);
-        transform: translateY(-20px) scale(0);
-    }
 }
 
 @-webkit-keyframes in {
