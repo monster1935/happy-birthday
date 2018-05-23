@@ -1,15 +1,7 @@
 <template>
   <div id="app">
-     <div class="velas">
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-    </div>
     <Candle></Candle>
     <Cake></Cake>
-
     <div class="name">Dear YuanYuan</div>
     <div class="happy">
         <img src="static/img/HappyBirthday.png">
